@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CalculatorTest {
     // invalid tokens -> IllegalArgumentException
     // division by zero -> ArithmeticException
-    // division
-    // product
     // expression with all operators
     // expression with inverted precedence
 
@@ -57,4 +55,24 @@ public class CalculatorTest {
         assertEquals(965, calculator.compute("971-6"));
     }
 
+    // multiplication
+    @Test
+    void computeWithSingleMultiplicationShouldReturnItsValue() {
+        Calculator calculator = new Calculator();
+        assertEquals(4059, calculator.compute("33*123"));
+    }
+
+    // division
+    @Test
+    void computeWithSingleDivisionShouldReturnItsValue() {
+        Calculator calculator = new Calculator();
+        assertEquals(3, calculator.compute("363/100"));
+    }
+
+    // expression with all operators
+    @Test
+    void computeWithAllOperatorsShouldReturnExpressionValue() {
+        Calculator calculator = new Calculator();
+        assertEquals(-41, calculator.compute("12+34*5/123-42"));
+    }
 }
