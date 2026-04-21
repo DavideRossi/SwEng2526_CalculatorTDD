@@ -5,11 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
-    // invalid tokens -> IllegalArgumentException
-    // division by zero -> ArithmeticException
-    // expression with all operators
-    // expression with inverted precedence
-
     // null -> IllegalArgumentException
     @Test
     void computeWithNullParameterShouldRaiseIllegalArgumentException() {
@@ -70,9 +65,18 @@ public class CalculatorTest {
     }
 
     // expression with all operators
+    // expression with inverted precedence
     @Test
     void computeWithAllOperatorsShouldReturnExpressionValue() {
         Calculator calculator = new Calculator();
         assertEquals(-41, calculator.compute("12+34*5/123-42"));
+    }
+
+    // division by zero -> ArithmeticException
+    @Test
+    void computeWithDivisionByZeroShouldRaiseException() {
+        Calculator calculator = new Calculator();
+        assertThrows(ArithmeticException.class, () ->
+            calculator.compute("12+34*5/0-42"));
     }
 }
